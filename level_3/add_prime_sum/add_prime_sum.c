@@ -6,14 +6,13 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 19:28:53 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/04 22:02:32 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/05 18:20:01 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
-int	it_is_prime(int a)
+int		it_is_prime(int a)
 {
 	int i;
 
@@ -27,7 +26,7 @@ int	it_is_prime(int a)
 	return (i);
 }
 
-int	ft_atoi(char *s)
+int		ft_atoi(char *s)
 {
 	int i;
 	int	n;
@@ -39,18 +38,34 @@ int	ft_atoi(char *s)
 	return (n);
 }
 
-int	main(int ac, char **av)
+void	ft_putnbr(int n)
+{
+	int c;
+
+	if (n < 10)
+	{
+		c = n + '0';
+		write(1, &c, 1);
+	}
+	else
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
+}
+
+int		main(int ac, char **av)
 {
 	int n;
 	int i;
 	int sum;
 	int j;
 
+	sum = 0;
 	if (ac == 2)
 	{
 		i = 2;
 		j = 0;
-		sum = 0;
 		n = ft_atoi(av[1]);
 		while (i <= n)
 		{
@@ -58,7 +73,7 @@ int	main(int ac, char **av)
 			sum += j;
 			i++;
 		}
-		printf("%d\n", sum);
+		ft_putnbr(sum);
 	}
 	write(1, "\n", 1);
 	return (0);
