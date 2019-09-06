@@ -6,17 +6,28 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 18:23:23 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/05 20:43:20 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/06 17:23:13 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	main(int ac, char **av)
+void	it_is_space(char *a)
 {
-	char *a;
 	int i;
-	int j;
+
+	i = 0;
+	if (a[i] == ' ' || a[i] == '\n' || a[i] == '\t')
+		i++;
+	while (a[i] != '\0')
+		write(1, &a[i++], 1);
+}
+
+int		main(int ac, char **av)
+{
+	char	*a;
+	int		i;
+	int		j;
 
 	a = av[1];
 	i = 0;
@@ -26,15 +37,14 @@ int	main(int ac, char **av)
 		while (av[1][i] != '\0')
 		{
 			if ((av[1][i] == '\n' || av[1][i] == ' ' || av[1][i] == '\t') &&
-				(av[1][i + 1] == '\n' || av[1][i + 1] == ' ' || av[1][i + 1] == '\t' || av[1][i + 1] == '\0'))
+				(av[1][i + 1] == '\n' || av[1][i + 1] == ' ' ||
+				av[1][i + 1] == '\t' || av[1][i + 1] == '\0'))
 				i++;
 			else
 				a[j++] = av[1][i++];
 		}
 		a[j] = '\0';
-		j = 0;
-		while (a[j] != '\0')
-			write(1, &a[j++], 1);
+		it_is_space(a);
 	}
 	write(1, "\n", 1);
 	return (0);
