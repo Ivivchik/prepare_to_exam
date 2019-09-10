@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_rrange.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:29:34 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/10 21:05:22 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/10 21:18:34 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int		*ft_range(int start, int end)
 	if (!(s = (int *)malloc(sizeof(int) * (len + 1))))
 		return (NULL);
 	if (start <= end)
-		while (start <= end)
-			s[i++] = start++;
+		while (end >= start)
+			s[i++] = end--;
 	else
-		while (end <= start)
-			s[i++] = end++;
+		while (start >= end)
+			s[i++] = start--;
 	s[i] = '\0';
 	return (s);
 }
