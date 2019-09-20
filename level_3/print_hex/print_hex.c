@@ -6,7 +6,7 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 19:33:47 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/11 21:52:31 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/20 19:56:14 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,12 @@ int		ft_atoi(char *s)
 
 void	print_hex(int n)
 {
-	char	*s;
+	int c;
 
-	s = "0123456789abcdef";
-	if (n == 0)
-		write(1, "0", 1);
-	while (n)
-	{
-		write(1, &s[n % 16], 1);
-		n /= 16;
-	}
+	if (n >= 16)
+		print_hex(n / 16);
+	c = n % 16 + (n % 16 < 10 ? '0' : 'a' - 10);
+	write(1, &c, 1);
 }
 
 int		main(int ac, char **av)

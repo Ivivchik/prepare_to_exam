@@ -6,7 +6,7 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 17:21:30 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/01 18:26:59 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/20 19:59:22 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_atoi(const char *str)
 
 	number = 0;
 	sign = 1;
-	while (*str == '\n' || *str == '\t' || *str == ' ')
+	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '+')
 		str++;

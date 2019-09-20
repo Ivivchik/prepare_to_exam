@@ -6,7 +6,7 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:29:34 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/10 21:05:22 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/20 22:22:09 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,15 @@
 
 int		*ft_range(int start, int end)
 {
-	int	len;
-	int	*s;
-	int	i;
+	int len;
+	int *s;
+	int i = 0;
 
-	i = 0;
-	len = end - start;
-	if (len <= 0)
-		len = -1 * len + 1;
-	else
-		len += 1;
+	len = (end >= start) ? (end - start + 1) : (start - end + 1);
 	if (!(s = (int *)malloc(sizeof(int) * (len + 1))))
 		return (NULL);
-	if (start <= end)
-		while (start <= end)
-			s[i++] = start++;
-	else
-		while (end <= start)
-			s[i++] = end++;
-	s[i] = '\0';
+	while (i < len)
+		s[i++] = (end >= start) ? start++ : start--;
 	return (s);
 }
 
@@ -43,13 +33,18 @@ int		main(int ac, char **av)
 	int	e;
 	int	s;
 	int	*a;
+	int i = 0;
 
 	(void)ac;
 	s = atoi(av[1]);
 	e = atoi(av[2]);
 	a = ft_range(s, e);
-	printf("%d\n", *a);
-	while (*a != '\0')
-		printf("%d ", *a++);
+	int len = 7;
+	while (len)
+	{
+		printf("%d ", a[i]);
+		i++;
+		len--;
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 20:07:14 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/02 20:43:51 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/20 20:12:06 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	max(int *tab, unsigned int len)
 	unsigned	int i;
 
 	if (!tab)
+		return (0);
+	if (!len)
 		return (0);
 	i = 0;
 	max = tab[i];

@@ -6,7 +6,7 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 18:49:05 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/13 20:04:45 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/19 16:53:40 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	rex_wstr(char *s)
 	j = 0;
 	len = ft_strlen(s);
 	len1 = len - 1;
-	a = (char *)malloc(sizeof(char) * len);
+	a = (char *)malloc(sizeof(char) * len + 2);
 	len--;
 	while (len1)
 	{
@@ -45,8 +45,8 @@ void	rex_wstr(char *s)
 		while (s[i] != '\0')
 			a[j++] = s[i++];
 		a[j] = ' ';
-		// while (a[j] != '\0')
-		// 	write(1, &a[j++], 1);
+		while (a[j] != '\0')
+			write(1, &a[j++], 1);
 		len1 -= len;
 	}
 }

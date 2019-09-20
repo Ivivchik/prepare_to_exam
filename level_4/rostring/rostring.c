@@ -6,7 +6,7 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 17:04:49 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/13 18:52:13 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/19 17:02:32 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	rostring(char *a)
 	i = 0;
 	j = 0;
 	len = ft_strlen(a);
-	s = (char *)malloc(sizeof(char) * (len + 2));
+	s = (char *)malloc(sizeof(char) * (len + 1));
 	while (a[i] != '\n' && a[i] != '\t' && a[i] != ' ' && a[i] != '\0')
 		i++;
 	i++;

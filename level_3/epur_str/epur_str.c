@@ -6,46 +6,49 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 18:23:23 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/09/06 17:23:13 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/09/20 21:15:14 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	it_is_space(char *a)
+int ft_strlen(char *a)
 {
 	int i;
 
 	i = 0;
-	if (a[i] == ' ' || a[i] == '\n' || a[i] == '\t')
-		i++;
 	while (a[i] != '\0')
-		write(1, &a[i++], 1);
+		i++;
+	return (i);
+}
+
+int	it_is_space(char a)
+{
+	if (a == 32 || (a >= 9 && a <= 13))
+		return (1);
+	return (0);
+}
+
+void	epurstr(char *s)
+{
+	int len = ft_strlen(s);
+
+	while (len && it_is_space(s[len - 1]))
+		--len;
+	while (len && it_is_space(*s) && *s++)
+		--len;
+	while (len--)
+	{
+		if (!it_is_space(*s) || (*(s + 1) && !it_is_space(*(s + 1))))
+			write(1, s, 1);
+		s++;
+	}
 }
 
 int		main(int ac, char **av)
 {
-	char	*a;
-	int		i;
-	int		j;
-
-	a = av[1];
-	i = 0;
-	j = 0;
-	if (ac == 2)
-	{
-		while (av[1][i] != '\0')
-		{
-			if ((av[1][i] == '\n' || av[1][i] == ' ' || av[1][i] == '\t') &&
-				(av[1][i + 1] == '\n' || av[1][i + 1] == ' ' ||
-				av[1][i + 1] == '\t' || av[1][i + 1] == '\0'))
-				i++;
-			else
-				a[j++] = av[1][i++];
-		}
-		a[j] = '\0';
-		it_is_space(a);
-	}
+	if (ac == 2 && *av[1])
+		epurstr(av[1]);
 	write(1, "\n", 1);
 	return (0);
 }
